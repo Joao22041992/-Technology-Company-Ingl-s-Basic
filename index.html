@@ -1,1143 +1,335 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aprenda Inglês Fácil - Gramática Básica</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Practice: Questions</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-      :root {
-        --primary-color: #000000;
-        --secondary-color: #f5f7fa;
-        --text-color: #333;
-        --success-color: #28a745;
-        --error-color: #dc3545;
-        --card-bg: #ffffff;
-      }
-
-      /* Estilos da Barra de Navegação */
-      .navbar {
-        background-color: var(--card-bg);
-        padding: 15px 40px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .navbar-logo {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-size: 1.5em;
-        font-weight: bold;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #e9ecef;
-        margin: 0;
-        padding: 0; /* Removido para a navbar ocupar toda a largura */
-        color: var(--text-color);
-        line-height: 1.6;
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 40px;
-        padding-top: 20px; /* Adicionado espaço acima do título */
-      }
-
-      h1 {
-        color: var(--primary-color);
-      }
-
-      /* Grid de Tópicos */
-      .topics-container {
-        /* O layout em grid foi removido para que os cards fiquem um embaixo do outro. */
-        gap: 20px;
-        max-width: 1280px; /* Aumentado para melhor alinhamento */
-        padding: 0 40px 40px; /* Adicionado padding lateral e inferior */
-        margin: 0 auto;
-      }
-
-      /* Cartão do Tópico */
-      .topic-card {
-        background: var(--card-bg);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.2s;
-        border-left: 5px solid var(--primary-color);
-      }
-
-      .topic-header {
-        padding: 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        font-size: 1.1em;
-      }
-
-      .topic-header:hover {
-        background-color: #f8f9fa;
-      }
-
-      .topic-content {
-        display: none; /* Escondido por padrão */
-        padding: 20px;
-        border-top: 1px solid #eee;
-        background-color: #fafafa;
-      }
-
-      .topic-content.active {
-        display: block;
-        animation: fadeIn 0.5s;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        to {
-          opacity: 1;
+        .hero-section {
+            background: linear-gradient(135deg, #000000, #000307);
+            color: white;
+            padding: 2rem 0;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 2rem;
         }
-      }
-
-      /* Estilos de Tradução */
-      .en-text {
-        font-weight: bold;
-        color: #2c3e50;
-      }
-
-      .pt-translation {
-        display: none;
-        color: #666;
-        font-style: italic;
-        margin-left: 5px;
-        background-color: #e2e6ea;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.9em;
-      }
-
-      .translatable {
-        display: inline-block; /* Garante que o botão não quebre a linha */
-        vertical-align: middle;
-      }
-
-      .translate-btn {
-        background: none;
-        border: 1px solid var(--primary-color);
-        color: var(--primary-color);
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8em;
-        padding: 2px 5px;
-        margin-left: 5px;
-      }
-
-      .translate-btn:hover {
-        background-color: var(--primary-color);
-        color: white;
-      }
-
-      /* Estilos dos Exercícios */
-      .exercise-section {
-        margin-top: 30px;
-        padding: 15px;
-        background-color: white;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-      }
-
-      .exercise-item {
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-        border-bottom: 1px dashed #ccc;
-      }
-
-      input[type="text"] {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 70%;
-        max-width: 300px;
-      }
-
-      .btn-check {
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-
-      .feedback {
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 4px;
-        display: none;
-      }
-
-      .feedback.correct {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-        display: block;
-      }
-
-      .feedback.incorrect {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-        display: block;
-      }
-
-      .options-label {
-        display: block;
-        margin: 5px 0;
-        cursor: pointer;
-      }
+        .exercise-card {
+            transition: transform 0.2s;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        .exercise-card:hover {
+            transform: translateY(-3px);
+        }
+        .translation-text {
+            color: #6c757d;
+            font-style: italic;
+            border-top: 1px dashed #dee2e6;
+            margin-top: 10px;
+            padding-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .feedback-msg {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+        .nav-link-custom {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .instruction-box {
+            background-color: #ffffff;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .correct-answer-display {
+            font-size: 0.9em;
+            color: #198754;
+        }
     </style>
-  </head>
-  <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-logo">
-        Technology Company
-      </a>
+</head>
+<body>
+
+    <!-- Navbar with Hamburger Menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap me-2"></i>  Technology Company</a>
+            
+            <!-- Hamburger Button (Right aligned) -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas Menu -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active btn btn-outline-light text-primary mt-2 mt-lg-0" style="background:white; border:none;" href="grammar.html">Grammar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <header>
-      <h1>Gramática Básica de Inglês</h1>
-      <p>
-        Clique nos tópicos abaixo para expandir a explicação e fazer os
-        exercícios.
-      </p>
-    </header>
+    <!-- Content Wrapper -->
+    <div class="container pb-5">
 
-    <div id="app" class="topics-container"></div>
+        <!-- RF003: Explicação Gramatical -->
+        <div class="hero-section text-center">
+            <div class="container">
+                <h1>Asking Questions in English</h1>
+                <p class="lead">Learn Simple Past, Present, and Wh-Questions</p>
+                
+                <div class="row justify-content-center mt-4 text-start">
+                    <div class="col-md-8">
+                        <div class="card text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><i class="fas fa-book-open me-2"></i>Grammar Rules</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><strong>1. Simple Past:</strong> Use <em>Did</em> + Subject + Base Verb? <br><small class="text-muted">Ex: Did you go?</small></li>
+                                    <li class="mb-2"><strong>2. Simple Present:</strong> Use <em>Do/Does</em> + Subject + Base Verb? <br><small class="text-muted">Ex: Do you like pizza? / Does she work here?</small></li>
+                                    <li class="mb-2"><strong>3. Wh-Questions:</strong> Word (Who, What, Where, When, How) + Auxiliary + Subject?<br><small class="text-muted">Ex: Where did you go?</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RF004/RF007: Instruções em Português -->
+        <div class="instruction-box">
+            <h4><i class="fas fa-info-circle me-2"></i>Instruções</h4>
+            <p class="mb-0">
+                Abaixo você encontrará 30 exercícios divididos em três categorias. 
+                Responda em <strong>Inglês</strong>. Use o botão "Translate" para ver a tradução da frase se precisar de ajuda. 
+                Clique em "Check" para verificar sua resposta instantaneamente.
+            </p>
+        </div>
+
+        <!-- Navegação por Abas para os Tipos de Exercícios -->
+        <ul class="nav nav-pills mb-4 justify-content-center" id="exercises-top" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-gap-tab" data-bs-toggle="pill" data-bs-target="#pills-gap" type="button" role="tab">1. Fill in the Blanks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-complete-tab" data-bs-toggle="pill" data-bs-target="#pills-complete" type="button" role="tab">2. Complete Sentences</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-choice-tab" data-bs-toggle="pill" data-bs-target="#pills-choice" type="button" role="tab">3. Multiple Choice</button>
+            </li>
+        </ul>
+
+        <!-- Conteúdo das Abas (RF005/RF006) -->
+        <div class="tab-content" id="pills-tabContent">
+            
+            <!-- 10 Exercícios: Preencher Lacunas -->
+            <div class="tab-pane fade show active" id="pills-gap" role="tabpanel">
+                <div class="row" id="gap-container">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+
+            <!-- 10 Exercícios: Completar Frases -->
+            <div class="tab-pane fade" id="pills-complete" role="tabpanel">
+                <div class="row" id="complete-container">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+
+            <!-- 10 Exercícios: Múltipla Escolha -->
+            <div class="tab-pane fade" id="pills-choice" role="tabpanel">
+                <div class="row" id="choice-container">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // --- BANCO DE DADOS DO CONTEÚDO ---
-      // Aqui estão os tópicos baseados no seu texto.
-      // Para brevidade do código, incluí os primeiros tópicos completos e a estrutura para os demais.
+        // --- DATA SOURCE (RF005, RF006) ---
+        
+        // 1. Fill in the Blanks Data
+        const gapData = [
+            { id: 'g1', question: "Where ___ you go last night?", translation: "Onde você foi ontem à noite?", answer: "did" },
+            { id: 'g2', question: "___ she like chocolate?", translation: "Ela gosta de chocolate?", answer: "does" },
+            { id: 'g3', question: "What ___ they eating now?", translation: "O que eles estão comendo agora?", answer: "are" },
+            { id: 'g4', question: "___ you play soccer yesterday?", translation: "Você jogou futebol ontem?", answer: "did" },
+            { id: 'g5', question: "When ___ the bus arrive?", translation: "Quando o ônibus chega?", answer: "does" },
+            { id: 'g6', question: "___ your brother working today?", translation: "Seu irmão está trabalhando hoje?", answer: "is" },
+            { id: 'g7', question: "How ___ you travel to school?", translation: "Como você vai para a escola?", answer: "do" },
+            { id: 'g8', question: "Who ___ you see at the party?", translation: "Quem você viu na festa?", answer: "did" },
+            { id: 'g9', question: "___ they speak English?", translation: "Eles falam inglês?", answer: "do" },
+            { id: 'g10', question: "Why ___ she crying?", translation: "Por que ela está chorando?", answer: "is" }
+        ];
 
-      const topicsData = [
-        {
-          id: 1,
-          title: "1. Simple Past (Verbos Be e Go)",
-          explanation: `
-                <p><strong>O que é:</strong> Descreve ações ou estados que aconteceram e terminaram no passado. Aqui, focamos nos verbos 'to be' (ser/estar) e 'to go' (ir).</p>
-                <ul>
-                    <li>Use <span class="translatable" data-tr="era/estava"><strong>'was'</strong></span> com os sujeitos <span class="translatable" data-tr="Eu"><strong>I</strong></span>, <span class="translatable" data-tr="Ele"><strong>He</strong></span>, <span class="translatable" data-tr="Ela"><strong>She</strong></span>, <span class="translatable" data-tr="Isso/Ele/Ela (neutro)"><strong>It</strong></span>.<br>Exemplo: <span class="translatable" data-tr="Ela estava feliz.">She was happy.</span></li>
-                    <li>Use <span class="translatable" data-tr="eram/estavam"><strong>'were'</strong></span> com os sujeitos <span class="translatable" data-tr="Você/Vocês"><strong>You</strong></span>, <span class="translatable" data-tr="Nós"><strong>We</strong></span>, <span class="translatable" data-tr="Eles/Elas"><strong>They</strong></span>.<br>Exemplo: <span class="translatable" data-tr="Eles eram amigos.">They were friends.</span></li>
-                    <li>O passado do verbo <span class="translatable" data-tr="ir">'go'</span> é <span class="translatable" data-tr="fui/foi/fomos/foram"><strong>'went'</strong></span> para todos os sujeitos.<br>Exemplo: <span class="translatable" data-tr="Eu fui ao parque.">I went to the park.</span></li>
-                </ul>`,
-          exercises: [
-            {
-              type: "gap",
-              question: "I ___ to the park yesterday.",
-              answer: "went",
-              explanation: "O passado de 'go' é 'went' para qualquer pessoa.",
-            },
-            {
-              type: "choice",
-              question: "Qual a frase correta?",
-              options: ["She were happy.", "She was happy.", "She is happy."],
-              answer: "She was happy.",
-              explanation: "Com 'She' usamos 'was'.",
-            },
-            {
-              type: "gap",
-              question: "They ___ friends in college.",
-              answer: "were",
-              explanation: "Com 'They' usamos 'were'.",
-            },
-            {
-              type: "gap",
-              question: "He ___ a doctor before he retired.",
-              answer: "was",
-              explanation: "Com 'He' usamos 'was'.",
-            },
-            {
-              type: "choice",
-              question: "Complete: We ___ to the cinema last night.",
-              options: ["was", "were", "went"],
-              answer: "went",
-              explanation: "O passado de 'go' é 'went'.",
-            },
-            {
-              type: "gap",
-              question: "You ___ very busy yesterday.",
-              answer: "were",
-              explanation: "Com 'You' usamos 'were'.",
-            },
-            {
-              type: "gap",
-              question: "The weather ___ fantastic last summer.",
-              answer: "was",
-              explanation: "Com 'The weather' (it), usamos 'was'.",
-            },
-            {
-              type: "choice",
-              question: "Onde você estava? -> Where ___ you?",
-              options: ["was", "were", "is"],
-              answer: "were",
-              explanation: "Em perguntas com 'You', usamos 'were'.",
-            },
-            {
-              type: "gap",
-              question: "My brother and I ___ to the beach.",
-              answer: "went",
-              explanation: "O passado de 'go' é 'went'.",
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "2. Verb 'Be' (Presente) e Contrações",
-          explanation: `
-                <p><strong>O que é:</strong> Formas completas e contraídas do verbo ser/estar.</p>
-                <ul>
-                    <li>Contrações: <span class="translatable" data-tr="Eu sou / Eu estou">I'm</span>, <span class="translatable" data-tr="Você é / Você está">You're</span>, <span class="translatable" data-tr="Ele é / Ele está">He's</span>.</li>
-                    <li>Use contrações na fala e escrita informal.</li>
-                    <li>Perguntas e respostas curtas: <span class="translatable" data-tr="Ele é espanhol? Sim, ele é.">Is he Spanish? Yes, he is.</span></li>
-                </ul>`,
-          exercises: [
-            {
-              type: "gap",
-              question: "Contração de 'She is':",
-              answer: "she's",
-              explanation: "Removemos o 'i' e colocamos o apóstrofo: She's.",
-            },
-            {
-              type: "choice",
-              question:
-                "Selecione a resposta curta correta para: 'Are you tired?'",
-              options: ["Yes, I'm.", "Yes, I am.", "Yes, I be."],
-              answer: "Yes, I am.",
-              explanation:
-                "Em respostas curtas afirmativas, não usamos contração no final da frase.",
-            },
-            {
-              type: "write",
-              question: "Escreva uma frase dizendo quem você é usando 'I'm'.",
-              keyword: "i'm",
-              model: "I'm a student.",
-              explanation: "Use I'm + profissão, nome ou adjetivo.",
-            },
-            {
-              type: "gap",
-              question: "Contração de 'We are':",
-              answer: "we're",
-              explanation: "Removemos o 'a' e colocamos o apóstrofo: We're.",
-            },
-            {
-              type: "gap",
-              question: "Contração de 'They are':",
-              answer: "they're",
-              explanation: "Removemos o 'a' e colocamos o apóstrofo: They're.",
-            },
-            {
-              type: "choice",
-              question: "Qual a forma completa de 'He's'?",
-              options: ["He is", "He was", "He has"],
-              answer: "He is",
-              explanation: "'He's' é a contração de 'He is'.",
-            },
-            {
-              type: "gap",
-              question: "___ you a student?",
-              answer: "are",
-              explanation: "Para perguntas com 'you', usamos 'Are'.",
-            },
-            {
-              type: "choice",
-              question: "Resposta curta para 'Is she from Canada?':",
-              options: ["Yes, she's.", "No, she isn't.", "No, she's not."],
-              answer: "No, she isn't.",
-              explanation:
-                "Em respostas curtas negativas, usamos a forma contraída 'isn't' ou 'is not', mas 'isn't' é mais comum. 'she's not' também é possível, mas 'she's' no final de uma afirmativa curta é incorreto.",
-            },
-            {
-              type: "gap",
-              question: "I ___ not a doctor. I am a teacher.",
-              answer: "am",
-              explanation: "A forma negativa de 'I am' é 'I am not'.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma frase sobre seu amigo usando 'He's' ou 'She's'.",
-              keyword: "'s",
-              model: "He's very smart.",
-              explanation:
-                "Use He's ou She's seguido de um adjetivo ou profissão.",
-            },
-          ],
-        },
-        {
-          id: 3,
-          title: "3. Nouns & Articles (Substantivos e Artigos)",
-          explanation: `
-                <p><strong>O que é:</strong> Uso de 'a/an' e plurais.</p>
-                <ul>
-                    <li><span class="translatable" data-tr="um/uma"><strong>A</strong></span> + som de consoante: <span class="translatable" data-tr="um livro">a book</span>, <span class="translatable" data-tr="uma caneta">a pen</span>.</li>
-                    <li><span class="translatable" data-tr="um/uma"><strong>An</strong></span> + som de vogal: <span class="translatable" data-tr="um guarda-chuva">an umbrella</span>, <span class="translatable" data-tr="um iPad">an iPad</span>.</li>
-                    <li>Plural geral: adicione -s (<span class="translatable" data-tr="livros">Books</span>). Plurais especiais: <span class="translatable" data-tr="relógios">watches</span> (termina em -ch).</li>
-                </ul>`,
-          exercises: [
-            {
-              type: "gap",
-              question: "Complete com 'a' ou 'an': It is ___ apple.",
-              answer: "an",
-              explanation: "Apple começa com som de vogal.",
-            },
-            {
-              type: "choice",
-              question: "Qual o plural de 'Watch' (relógio)?",
-              options: ["Watchs", "Watches", "Watchies"],
-              answer: "Watches",
-              explanation: "Palavras terminadas em CH recebem ES no plural.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma frase dizendo que você tem um objeto (Use 'I have a...').",
-              keyword: "have",
-              model: "I have a car.",
-              explanation: "Lembre-se do artigo 'a' ou 'an'.",
-            },
-            {
-              type: "gap",
-              question:
-                "Complete com 'a' ou 'an': She is ___ university student.",
-              answer: "a",
-              explanation:
-                "'University' começa com som de 'y' (consoante), então usamos 'a'.",
-            },
-            {
-              type: "gap",
-              question: "Complete com 'a' ou 'an': I need ___ hour to finish.",
-              answer: "an",
-              explanation:
-                "'Hour' começa com som de vogal (o 'h' é mudo), então usamos 'an'.",
-            },
-            {
-              type: "choice",
-              question: "Qual o plural de 'person'?",
-              options: ["persons", "people", "peoples"],
-              answer: "people",
-              explanation: "'Person' tem um plural irregular: 'people'.",
-            },
-            {
-              type: "gap",
-              question: "O plural de 'child' é ___.",
-              answer: "children",
-              explanation: "'Child' é um substantivo com plural irregular.",
-            },
-            {
-              type: "choice",
-              question: "Qual frase está correta?",
-              options: [
-                "I see a sheeps.",
-                "I see a sheep.",
-                "I see one sheeps.",
-              ],
-              answer: "I see a sheep.",
-              explanation:
-                "O substantivo 'sheep' é igual no singular e no plural.",
-            },
-            {
-              type: "gap",
-              question: "My sister has two ___ (filho).",
-              answer: "children",
-              explanation: "O plural de 'child' é 'children'.",
-            },
-            {
-              type: "write",
-              question: "Escreva uma frase com o plural de 'box' (caixa).",
-              keyword: "boxes",
-              model: "There are two boxes on the table.",
-              explanation: "Palavras terminadas em 'x' recebem 'es' no plural.",
-            },
-          ],
-        },
-        {
-          id: 4,
-          title: "4. There Is / There Are",
-          explanation: `
-                <p>Expressar existência (Haver/Ter).</p>
-                <ul>
-                    <li>Singular: <span class="translatable" data-tr="Há uma praia.">There is a beach.</span> / <span class="translatable" data-tr="Não há um bar.">There isn't a bar.</span></li>
-                    <li>Plural: <span class="translatable" data-tr="Há algumas pessoas.">There are some people.</span></li>
-                    <li>Negativa e Pergunta (Plural): Use <span class="translatable" data-tr="nenhum/algum">'any'</span>. <span class="translatable" data-tr="Não há restaurantes.">There aren't any restaurants.</span> / <span class="translatable" data-tr="Há quartos?">Are there any rooms?</span></li>
-                </ul>`,
-          exercises: [
-            {
-              type: "gap",
-              question: "Plural de 'There is' é 'There ___'.",
-              answer: "are",
-              explanation: "There are é usado para plural.",
-            },
-            {
-              type: "choice",
-              question: "Complete: ___ any chairs in the room?",
-              options: ["Is there", "Are there", "There are"],
-              answer: "Are there",
-              explanation: "Em perguntas no plural, invertemos: Are there.",
-            },
-            {
-              type: "write",
-              question: "Escreva o que há na sua mesa agora (There is...).",
-              keyword: "there",
-              model: "There is a computer on my desk.",
-              explanation: "Use There is para um objeto.",
-            },
-            {
-              type: "gap",
-              question: "___ a good movie on TV tonight.",
-              answer: "there is",
-              explanation: "Usamos 'There is' para singular ('a good movie').",
-            },
-            {
-              type: "choice",
-              question: "Forma negativa de 'There is a problem':",
-              options: [
-                "There no is a problem.",
-                "There not is a problem.",
-                "There isn't a problem.",
-              ],
-              answer: "There isn't a problem.",
-              explanation:
-                "A negativa de 'There is' é 'There is not' ou 'There isn't'.",
-            },
-            {
-              type: "gap",
-              question: "___ many people at the party.",
-              answer: "there are",
-              explanation: "Usamos 'There are' para plural ('many people').",
-            },
-            {
-              type: "choice",
-              question: "Complete: 'Are there ___ messages for me?'",
-              options: ["any", "some", "a"],
-              answer: "any",
-              explanation: "Usamos 'any' em perguntas com plural.",
-            },
-            {
-              type: "gap",
-              question: "No, ___ any restaurants open now.",
-              answer: "there aren't",
-              explanation: "Usamos 'there aren't' para negativas no plural.",
-            },
-            {
-              type: "gap",
-              question: "How many students ___ in your class?",
-              answer: "are there",
-              explanation:
-                "Em perguntas com 'How many', usamos a estrutura 'are there'.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva sobre algo que não existe em sua cidade usando 'There isn't a...'",
-              keyword: "isn't",
-              model: "There isn't a subway in my city.",
-              explanation: "Use 'There isn't a' para um item no singular.",
-            },
-          ],
-        },
-        {
-          id: 5,
-          title: "5. Adverbs of Frequency",
-          explanation:
-            "<p>Advérbios (<span class='translatable' data-tr='sempre'>always</span>, <span class='translatable' data-tr='nunca'>never</span>, <span class='translatable' data-tr='geralmente'>usually</span>) vêm <strong>antes</strong> do verbo principal, mas <strong>depois</strong> do verbo 'to be'.</p><p>Ex: <span class='translatable' data-tr='Ela quase nunca sai.'>She hardly ever goes out.</span></p><p>Ex: <span class='translatable' data-tr='Eu estou sempre em casa.'>I'm always at home.</span></p>",
-          exercises: [
-            {
-              type: "gap",
-              question: "I ___ (always) happy. (Complete com verbo e advérbio)",
-              answer: "am always",
-              explanation:
-                "O advérbio 'always' vem depois do verbo 'to be' (am).",
-            },
-            {
-              type: "choice",
-              question: "Posição correta:",
-              options: ["I work always.", "I always work."],
-              answer: "I always work.",
-              explanation: "Antes do verbo principal.",
-            },
-            {
-              type: "write",
-              question: "Diga algo que você sempre faz.",
-              keyword: "always",
-              model: "I always study.",
-              explanation: "",
-            },
-            {
-              type: "gap",
-              question: "She ___ (never) eats meat. She is a vegetarian.",
-              answer: "never",
-              explanation:
-                "O advérbio 'never' vem antes do verbo principal 'eats'.",
-            },
-            {
-              type: "choice",
-              question: "Qual frase está correta?",
-              options: ["He is often late.", "He often is late."],
-              answer: "He is often late.",
-              explanation:
-                "O advérbio 'often' vem depois do verbo 'to be' (is).",
-            },
-            {
-              type: "gap",
-              question: "We ___ (usually) go to the cinema on Fridays.",
-              answer: "usually",
-              explanation:
-                "O advérbio 'usually' vem antes do verbo principal 'go'.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma frase sobre algo que você raramente faz, usando 'rarely'.",
-              keyword: "rarely",
-              model: "I rarely drink coffee.",
-              explanation:
-                "Lembre-se de colocar 'rarely' antes do verbo principal.",
-            },
-            {
-              type: "gap",
-              question: "Do you ___ (sometimes) feel tired?",
-              answer: "sometimes",
-              explanation:
-                "'Sometimes' pode vir no início, meio ou fim da frase. Aqui, ele se encaixa antes do verbo principal.",
-            },
-            {
-              type: "choice",
-              question: "Eles nunca estão em casa. ->",
-              options: ["They never are at home.", "They are never at home."],
-              answer: "They are never at home.",
-              explanation:
-                "O advérbio 'never' vem depois do verbo 'to be' (are).",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma pergunta usando 'Do you ever...?' (Você alguma vez...?).",
-              keyword: "ever",
-              model: "Do you ever go to the gym?",
-              explanation:
-                "'Ever' é frequentemente usado em perguntas para significar 'alguma vez'.",
-            },
-          ],
-        },
-        {
-          id: 6,
-          title: "6. Present Progressive",
-          explanation:
-            "<p><strong>O que é:</strong> Usado para descrever ações que estão acontecendo no exato momento da fala ou em torno do presente.</p><p><strong>Como usar:</strong> Verbo 'to be' (<span class='translatable' data-tr='sou/estou'>am</span>/<span class='translatable' data-tr='é/está'>is</span>/<span class='translatable' data-tr='são/estão'>are</span>) + verbo principal com '-ing'.</p><ul><li>Afirmativa: <span class='translatable' data-tr='Eu estou trabalhando.'>I'm working.</span></li><li>Pergunta: <span class='translatable' data-tr='Você está trabalhando?'>Are you working?</span></li></ul>",
-          exercises: [
-            {
-              type: "gap",
-              question: "She ___ (read) a book now.",
-              answer: "is reading",
-              explanation: "Use 'is' para 'She' + verbo com -ing.",
-            },
-            {
-              type: "choice",
-              question: "O que você está fazendo?",
-              options: ["What you are doing?", "What are you doing?"],
-              answer: "What are you doing?",
-              explanation:
-                "Em perguntas com 'What', o verbo 'to be' vem antes do sujeito.",
-            },
-            {
-              type: "write",
-              question: "Escreva o que você está fazendo agora (I'm...).",
-              keyword: "i'm",
-              model: "I'm studying English.",
-              explanation: "Use I'm + verbo com -ing.",
-            },
-            {
-              type: "gap",
-              question: "They ___ (play) soccer in the park.",
-              answer: "are playing",
-              explanation: "Use 'are' para 'They' + verbo com -ing.",
-            },
-            {
-              type: "choice",
-              question: "He ___ to music.",
-              options: ["is listening", "are listening", "am listening"],
-              answer: "is listening",
-              explanation: "Para 'He', usamos 'is listening'.",
-            },
-            {
-              type: "gap",
-              question: "I ___ (not watch) TV right now.",
-              answer: "am not watching",
-              explanation:
-                "A forma negativa para 'I' é 'am not' + verbo com -ing.",
-            },
-            {
-              type: "choice",
-              question: "Complete a pergunta: ___ you ___ on a new project?",
-              options: ["Are / working", "Is / working", "Do / working"],
-              answer: "Are / working",
-              explanation:
-                "Para perguntas com 'you', usamos 'Are' no início e o verbo com -ing.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma pergunta sobre o que seu amigo está fazendo agora.",
-              keyword: "is",
-              model: "Is your friend studying?",
-              explanation: "Comece a pergunta com 'Is' (para 'he' ou 'she').",
-            },
-            {
-              type: "gap",
-              question: "The sun ___ (shine) brightly today.",
-              answer: "is shining",
-              explanation:
-                "Para 'The sun' (it), usamos 'is' + verbo com -ing. Note que 'shine' perde o 'e' final.",
-            },
-            {
-              type: "choice",
-              question:
-                "Por que o bebê está chorando? -> Why ___ the baby ___?",
-              options: ["is / crying", "are / crying", "does / cry"],
-              answer: "is / crying",
-              explanation:
-                "Para 'the baby' (it/he/she), usamos 'is' e o verbo com -ing.",
-            },
-          ],
-        },
-        {
-          id: 7,
-          title: "7. Ordinal Numbers (Números Ordinais)",
-          explanation:
-            "<p><strong>O que é:</strong> São números que indicam ordem ou posição (primeiro, segundo, terceiro...).</p><ul><li>1st - <span class='translatable' data-tr='primeiro'>first</span></li><li>2nd - <span class='translatable' data-tr='segundo'>second</span></li><li>3rd - <span class='translatable' data-tr='terceiro'>third</span></li><li>4th - <span class='translatable' data-tr='quarto'>fourth</span></li></ul><p>São usados para <span class='translatable' data-tr='datas'>dates</span>, <span class='translatable' data-tr='andares'>floors</span> de prédios, etc.</p>",
-          exercises: [
-            {
-              type: "gap",
-              question: "May is the ___ (5th) month of the year.",
-              answer: "fifth",
-              explanation: "O ordinal de 5 é 'fifth'.",
-            },
-            {
-              type: "choice",
-              question: "Ele chegou em segundo lugar.",
-              options: ["He arrived second.", "He arrived two."],
-              answer: "He arrived second.",
-              explanation: "Para ordem, usamos números ordinais.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva seu aniversário usando um número ordinal (Ex: My birthday is on the first of January).",
-              keyword: "on the",
-              model: "My birthday is on the 20th of April.",
-              explanation: "Use 'on the' + número ordinal + 'of' + mês.",
-            },
-            {
-              type: "gap",
-              question: "O número ordinal para 1 é ___.",
-              answer: "first",
-              explanation: "1st é 'first'.",
-            },
-            {
-              type: "gap",
-              question: "O número ordinal para 3 é ___.",
-              answer: "third",
-              explanation: "3rd é 'third'.",
-            },
-            {
-              type: "choice",
-              question: "Como se escreve '22nd' por extenso?",
-              options: ["twenty-two", "twenty-second", "twenty-twoth"],
-              answer: "twenty-second",
-              explanation:
-                "Para números compostos, apenas o último número se torna ordinal.",
-            },
-            {
-              type: "gap",
-              question: "This is my ___ (9th) attempt.",
-              answer: "ninth",
-              explanation: "O ordinal de 9 é 'ninth'.",
-            },
-            {
-              type: "choice",
-              question: "Qual andar ele mora? -> Which ___ does he live on?",
-              options: ["floor", "floorth", "floors"],
-              answer: "floor",
-              explanation:
-                "A pergunta usa o substantivo 'floor'. A resposta usaria o ordinal (e.g., 'the fifth floor').",
-            },
-            {
-              type: "gap",
-              question: "The ___ (12th) of December is a special day.",
-              answer: "twelfth",
-              explanation: "O ordinal de 12 é 'twelfth'.",
-            },
-            {
-              type: "write",
-              question: "Escreva uma frase sobre o segundo dia da semana.",
-              keyword: "second",
-              model: "The second day of the week is Tuesday.",
-              explanation: "Use a palavra 'second' para indicar a ordem.",
-            },
-          ],
-        },
-        {
-          id: 8,
-          title: "8. Cardinal Numbers (Números Cardinais)",
-          explanation:
-            "<p><strong>O que é:</strong> São os números que usamos para contar (um, dois, cem...).</p><ul><li>13 - <span class='translatable' data-tr='treze'>thirteen</span></li><li>30 - <span class='translatable' data-tr='trinta'>thirty</span></li><li>100 - <span class='translatable' data-tr='cem'>one hundred</span></li></ul><p>Atenção à pronúncia: <span class='translatable' data-tr='treze'>thir<strong>teen</strong></span> (sílaba tônica no final) vs. <span class='translatable' data-tr='trinta'><strong>thir</strong>ty</span> (sílaba tônica no início).</p>",
-          exercises: [
-            {
-              type: "gap",
-              question: "Escreva o número '14' por extenso.",
-              answer: "fourteen",
-              explanation: "14 em inglês é 'fourteen'.",
-            },
-            {
-              type: "choice",
-              question: "Como se escreve 50?",
-              options: ["Fiveteen", "Fifty"],
-              answer: "Fifty",
-              explanation: "'Fifty' é 50, 'fiveteen' (fifteen) é 15.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva sua idade por extenso (Ex: I am twenty-five years old).",
-              keyword: "i am",
-              model: "I am thirty years old.",
-              explanation: "Use 'I am' + sua idade por extenso.",
-            },
-            {
-              type: "gap",
-              question: "Escreva o número '80' por extenso.",
-              answer: "eighty",
-              explanation: "80 em inglês é 'eighty'.",
-            },
-            {
-              type: "choice",
-              question: "Qual número é 'nineteen'?",
-              options: ["90", "19", "9"],
-              answer: "19",
-              explanation: "Nineteen é 19. Ninety é 90.",
-            },
-            {
-              type: "gap",
-              question: "Escreva o número '101' por extenso.",
-              answer: "one hundred and one",
-              explanation:
-                "Em inglês britânico, 'and' é comum. Em americano, pode ser omitido ('one hundred one'). Ambas as formas são compreendidas.",
-            },
-            {
-              type: "gap",
-              question: "There are ___ (12) months in a year.",
-              answer: "twelve",
-              explanation: "12 em inglês é 'twelve'.",
-            },
-            {
-              type: "choice",
-              question: "Qual a diferença de pronúncia entre '13' e '30'?",
-              options: ["Nenhuma", "A sílaba tônica", "A vogal"],
-              answer: "A sílaba tônica",
-              explanation:
-                "A sílaba tônica é no final para thirTEEN e no início para THIRty.",
-            },
-            {
-              type: "gap",
-              question: "Escreva o número '23' por extenso.",
-              answer: "twenty-three",
-              explanation:
-                "Números de 21 a 99 (que não terminam em 0) usam hífen.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma frase dizendo quantos irmãos você tem, por extenso.",
-              keyword: "have",
-              model: "I have two brothers.",
-              explanation: "Ex: I have one sister / I have three brothers.",
-            },
-          ],
-        },
-        // ADICIONAR OS OUTROS TÓPICOS SEGUINDO ESSE PADRÃO...
-        // Para não deixar o código gigante, adicionei até o 4,
-        // mas a lógica suporta todos os 19. O usuário pode copiar e colar
-        // os blocos acima e mudar o ID e textos.
-        {
-          id: 9,
-          title: "9. Simple Past (Ações - Regular/Irregular)",
-          explanation:
-            "<p>Verbos regulares ganham -ed (<span class='translatable' data-tr='trabalhou'>worked</span>). Irregulares mudam de forma (<span class='translatable' data-tr='foi'>went</span>). Na negativa, use <span class='translatable' data-tr='não (passado)'><strong>didn't</strong></span> + verbo na forma base.</p><p>Ex: <span class='translatable' data-tr='Eu não trabalhei.'>I didn't work.</span></p>",
-          exercises: [
-            {
-              type: "gap",
-              question: "Negativa de 'I worked': I ___ work.",
-              answer: "didn't",
-              explanation: "Use didn't para negar no passado.",
-            },
-            {
-              type: "choice",
-              question: "Passado de 'Buy':",
-              options: ["Buyed", "Bought"],
-              answer: "Bought",
-              explanation: "Verbo irregular.",
-            },
-            {
-              type: "write",
-              question: "Escreva o que você não fez ontem (I didn't...).",
-              keyword: "didn't",
-              model: "I didn't play soccer.",
-              explanation: "",
-            },
-            {
-              type: "gap",
-              question: "O passado do verbo regular 'play' é ___.",
-              answer: "played",
-              explanation: "Verbos regulares recebem '-ed' no passado.",
-            },
-            {
-              type: "gap",
-              question: "O passado do verbo irregular 'see' é ___.",
-              answer: "saw",
-              explanation: "'See' é um verbo irregular. O passado é 'saw'.",
-            },
-            {
-              type: "choice",
-              question: "Qual a pergunta correta para o passado?",
-              options: ["Did you worked yesterday?", "Did you work yesterday?"],
-              answer: "Did you work yesterday?",
-              explanation:
-                "Em perguntas com 'Did', o verbo principal volta para a forma base (sem '-ed').",
-            },
-            {
-              type: "gap",
-              question: "She ___ (study) for the test last night.",
-              answer: "studied",
-              explanation:
-                "Para verbos terminados em 'consoante + y', trocamos o 'y' por 'ied'.",
-            },
-            {
-              type: "gap",
-              question: "He didn't ___ (come) to the party.",
-              answer: "come",
-              explanation:
-                "Depois de 'didn't', o verbo fica na sua forma base.",
-            },
-            {
-              type: "choice",
-              question: "Passado de 'eat':",
-              options: ["eated", "ate", "eat"],
-              answer: "ate",
-              explanation: "'Eat' é um verbo irregular.",
-            },
-            {
-              type: "write",
-              question:
-                "Escreva uma frase sobre algo que você fez no fim de semana passado.",
-              keyword: "i",
-              model: "I watched a movie last weekend.",
-              explanation: "Use um verbo no passado (regular ou irregular).",
-            },
-          ],
-        },
-      ];
+        // 2. Complete/Unscramble Sentences Data
+        // Answer logic will check if the user input includes key structure or matches exactly
+        const completeData = [
+            { id: 'c1', prompt: "Unscramble: you / did / what / buy ?", translation: "O que você comprou?", answer: "What did you buy" },
+            { id: 'c2', prompt: "Unscramble: live / do / where / you ?", translation: "Onde você mora?", answer: "Where do you live" },
+            { id: 'c3', prompt: "Unscramble: she / calling / is / who ?", translation: "Para quem ela está ligando?", answer: "Who is she calling" },
+            { id: 'c4', prompt: "Make it negative past: Did you go?", translation: "Eu não fui. (Traduza: I didn't go)", answer: "I didn't go" },
+            { id: 'c5', prompt: "Unscramble: arrive / when / they / did ?", translation: "Quando eles chegaram?", answer: "When did they arrive" },
+            { id: 'c6', prompt: "Unscramble: like / do / pizza / you ?", translation: "Você gosta de pizza?", answer: "Do you like pizza" },
+            { id: 'c7', prompt: "Make question: She lives in Rio. (Where...)", translation: "Onde ela mora?", answer: "Where does she live" },
+            { id: 'c8', prompt: "Unscramble: sad / why / are / you ?", translation: "Por que você está triste?", answer: "Why are you sad" },
+            { id: 'c9', prompt: "Make it negative present: Do you smoke?", translation: "Eu não fumo. (Traduza: I don't smoke)", answer: "I don't smoke" },
+            { id: 'c10', prompt: "Unscramble: how / work / does / it ?", translation: "Como isso funciona?", answer: "How does it work" }
+        ];
 
-      // --- LÓGICA DA APLICAÇÃO ---
+        // 3. Multiple Choice Data
+        const choiceData = [
+            { id: 'm1', question: "___ you watch TV last night?", translation: "Você assistiu TV ontem à noite?", options: ["Do", "Did", "Are"], answer: "Did" },
+            { id: 'm2', question: "Where ___ she work?", translation: "Onde ela trabalha?", options: ["do", "does", "is"], answer: "does" },
+            { id: 'm3', question: "___ they playing football?", translation: "Eles estão jogando futebol?", options: ["Do", "Did", "Are"], answer: "Are" },
+            { id: 'm4', question: "What ___ you do yesterday?", translation: "O que você fez ontem?", options: ["did", "do", "were"], answer: "did" },
+            { id: 'm5', question: "Who ___ that man?", translation: "Quem é aquele homem?", options: ["is", "does", "did"], answer: "is" },
+            { id: 'm6', question: "___ we have milk?", translation: "Nós temos leite?", options: ["Does", "Do", "Is"], answer: "Do" },
+            { id: 'm7', question: "When ___ it happen?", translation: "Quando isso aconteceu?", options: ["did", "was", "were"], answer: "did" },
+            { id: 'm8', question: "___ she reading a book?", translation: "Ela está lendo um livro?", options: ["Does", "Is", "Do"], answer: "Is" },
+            { id: 'm9', question: "How ___ you?", translation: "Como você está?", options: ["are", "do", "did"], answer: "are" },
+            { id: 'm10', question: "___ he call you?", translation: "Ele te ligou?", options: ["Did", "Was", "Were"], answer: "Did" }
+        ];
 
-      const app = document.getElementById("app");
+        // --- RENDERING FUNCTIONS (RF001, RF002, RF008, RF009, RF010) ---
 
-      function renderTopics() {
-        app.innerHTML = "";
-        // Ordenar os tópicos pelo ID para garantir a ordem correta na renderização
-        const sortedTopics = topicsData.sort((a, b) => a.id - b.id);
-
-        sortedTopics.forEach((topic) => {
-          // Criar Cartão
-          const card = document.createElement("div");
-          card.className = "topic-card";
-
-          // Cabeçalho (Título)
-          const header = document.createElement("div");
-          header.className = "topic-header";
-          header.innerHTML = `<span>${topic.title}</span> <span>&#9660;</span>`;
-          header.onclick = () => toggleTopic(content);
-
-          // Conteúdo (Explicação + Exercícios)
-          const content = document.createElement("div");
-          content.className = "topic-content";
-
-          // 1. Renderizar Explicação com botões de tradução
-          const explanationDiv = document.createElement("div");
-          explanationDiv.innerHTML = `<h3>Explicação</h3>${topic.explanation}`;
-          processTranslations(explanationDiv);
-
-          // 2. Renderizar Exercícios
-          const exercisesDiv = document.createElement("div");
-          exercisesDiv.className = "exercise-section";
-          exercisesDiv.innerHTML = `<h3>Exercícios</h3>`;
-
-          topic.exercises.forEach((ex, index) => {
-            const exItem = document.createElement("div");
-            exItem.className = "exercise-item";
-            const exId = `t${topic.id}-ex${index}`;
-
-            // Renderizar baseado no tipo
-            let inputHTML = "";
-            if (ex.type === "gap") {
-              inputHTML = `<p>${ex.question}</p>
-                                 <input type="text" id="input-${exId}" placeholder="Sua resposta">`;
-            } else if (ex.type === "choice") {
-              inputHTML = `<p>${ex.question}</p>`;
-              ex.options.forEach((opt) => {
-                inputHTML += `<label class="options-label">
-                                        <input type="radio" name="radio-${exId}" value="${opt}"> ${opt}
-                                      </label>`;
-              });
-            } else if (ex.type === "write") {
-              inputHTML = `<p>${ex.question}</p>
-                                 <input type="text" id="input-${exId}" placeholder="Escreva sua frase completa..." style="width:90%">`;
+        function createCard(item, type) {
+            let inputHtml = '';
+            
+            if (type === 'gap' || type === 'complete') {
+                inputHtml = `<input type="text" class="form-control mb-2" id="input-${item.id}" placeholder="Type your answer in English" autocomplete="off">`;
+            } else if (type === 'choice') {
+                inputHtml = `<div class="d-flex gap-2 justify-content-center mb-2">`;
+                item.options.forEach(opt => {
+                    inputHtml += `
+                        <input type="radio" class="btn-check" name="options-${item.id}" id="opt-${item.id}-${opt}" value="${opt}" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="opt-${item.id}-${opt}">${opt}</label>
+                    `;
+                });
+                inputHtml += `</div>`;
             }
 
-            exItem.innerHTML = `
-                    ${inputHTML}
-                    <br>
-                    <button class="btn-check" onclick="checkAnswer(${topic.id}, ${index}, '${ex.type}')">Verificar Resposta</button>
-                    <div id="feedback-${exId}" class="feedback"></div>
-                `;
-            exercisesDiv.appendChild(exItem);
-          });
+            // Translation Toggle Button (RF008)
+            const translationBtn = `
+                <button class="btn btn-sm btn-outline-secondary mb-2" onclick="toggleTranslation('${item.id}')">
+                    <i class="fas fa-language"></i> Translate
+                </button>
+            `;
 
-          content.appendChild(explanationDiv);
-          content.appendChild(exercisesDiv);
+            // Check Button (RF010)
+            const checkBtn = `
+                <button class="btn btn-success w-100" onclick="checkAnswer('${item.id}', '${type}', '${item.answer}')">
+                    <i class="fas fa-check"></i> Check Answer
+                </button>
+            `;
 
-          card.appendChild(header);
-          card.appendChild(content);
-          app.appendChild(card);
-        });
-      }
+            // Display Question logic
+            let displayQ = item.question || item.prompt;
 
-      // Função para adicionar funcionalidade de tradução
-      function processTranslations(element) {
-        const translatables = element.querySelectorAll(".translatable");
-        translatables.forEach((span) => {
-          const textPT = span.getAttribute("data-tr");
+            return `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card exercise-card h-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5 class="card-title text-primary mb-3">${displayQ}</h5>
+                            
+                            ${translationBtn}
+                            <div id="trans-${item.id}" class="translation-text mb-3">${item.translation}</div>
+                            
+                            <div class="mt-auto">
+                                ${inputHtml}
+                                ${checkBtn}
+                                <div id="feedback-${item.id}" class="feedback-msg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-          // Criar botão
-          const btn = document.createElement("button");
-          btn.innerText = "Traduzir";
-          btn.className = "translate-btn";
+        // --- LOGIC FUNCTIONS ---
 
-          // Criar span da tradução
-          const transSpan = document.createElement("span");
-          transSpan.className = "pt-translation";
-          transSpan.innerText = textPT;
+        function renderExercises() {
+            const gapContainer = document.getElementById('gap-container');
+            const completeContainer = document.getElementById('complete-container');
+            const choiceContainer = document.getElementById('choice-container');
 
-          // Ação do botão
-          btn.onclick = () => {
-            if (transSpan.style.display === "inline") {
-              transSpan.style.display = "none";
-              btn.innerText = "Traduzir";
+            gapData.forEach(item => gapContainer.innerHTML += createCard(item, 'gap'));
+            completeData.forEach(item => completeContainer.innerHTML += createCard(item, 'complete'));
+            choiceData.forEach(item => choiceContainer.innerHTML += createCard(item, 'choice'));
+        }
+
+        // Toggle Translation (RF008, RF009) - RNF003 (Instant)
+        window.toggleTranslation = function(id) {
+            const el = document.getElementById(`trans-${id}`);
+            if (el.style.display === "block") {
+                el.style.display = "none";
             } else {
-              transSpan.style.display = "inline";
-              btn.innerText = "Esconder";
+                el.style.display = "block";
             }
-          };
+        };
 
-          // Adiciona o botão e a tradução DEPOIS do span original
-          span.insertAdjacentElement("afterend", transSpan);
-          span.insertAdjacentElement("afterend", btn);
-        });
-      }
+        // Check Answer Logic (RF010)
+        window.checkAnswer = function(id, type, correctAnswer) {
+            let userAnswer = '';
+            const feedbackEl = document.getElementById(`feedback-${id}`);
+            
+            // Get value based on type
+            if (type === 'gap' || type === 'complete') {
+                userAnswer = document.getElementById(`input-${id}`).value.trim();
+            } else if (type === 'choice') {
+                const checked = document.querySelector(`input[name="options-${id}"]:checked`);
+                if (checked) userAnswer = checked.value;
+            }
 
-      // Abrir/Fechar Tópico
-      function toggleTopic(contentElement) {
-        const isActive = contentElement.classList.contains("active");
-        // Fecha todos
-        document
-          .querySelectorAll(".topic-content")
-          .forEach((c) => c.classList.remove("active"));
+            if (!userAnswer) {
+                feedbackEl.innerHTML = `<span class="text-warning"><i class="fas fa-exclamation-triangle"></i> Please answer first.</span>`;
+                feedbackEl.style.display = 'block';
+                return;
+            }
 
-        if (!isActive) {
-          contentElement.classList.add("active");
-        }
-      }
+            // Normalization for comparison (case insensitive, remove extra punctuation for simpler check)
+            const cleanUser = userAnswer.toLowerCase().replace(/[.,?!]/g, '').trim();
+            const cleanCorrect = correctAnswer.toLowerCase().replace(/[.,?!]/g, '').trim();
 
-      // Verificar Respostas
-      window.checkAnswer = function (topicId, exIndex, type) {
-        const topic = topicsData.find((t) => t.id === topicId);
-        const exercise = topic.exercises[exIndex];
-        const exId = `t${topicId}-ex${exIndex}`;
-        const feedbackDiv = document.getElementById(`feedback-${exId}`);
+            if (cleanUser === cleanCorrect) {
+                feedbackEl.innerHTML = `<span class="text-success"><i class="fas fa-check-circle"></i> Correct! Good job.</span>`;
+                feedbackEl.className = "feedback-msg alert alert-success p-1";
+            } else {
+                feedbackEl.innerHTML = `
+                    <span class="text-danger"><i class="fas fa-times-circle"></i> Incorrect. Try again!</span>
+                    <div class="correct-answer-display mt-1">Answer: ${correctAnswer}</div>
+                `;
+                feedbackEl.className = "feedback-msg alert alert-danger p-1";
+            }
+            feedbackEl.style.display = 'block';
+        };
 
-        let userAns = "";
-        let isCorrect = false;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderExercises);
 
-        // Captura da resposta
-        if (type === "gap" || type === "write") {
-          const input = document.getElementById(`input-${exId}`);
-          userAns = input.value.trim();
-        } else if (type === "choice") {
-          const checked = document.querySelector(
-            `input[name="radio-${exId}"]:checked`
-          );
-          if (checked) userAns = checked.value;
-        }
-
-        // Lógica de Validação
-        if (!userAns) {
-          feedbackDiv.className = "feedback incorrect";
-          feedbackDiv.innerHTML = "Por favor, insira uma resposta.";
-          return;
-        }
-
-        if (type === "gap") {
-          // Validação insensível a maiúsculas/minúsculas
-          if (userAns.toLowerCase() === exercise.answer.toLowerCase()) {
-            isCorrect = true;
-          }
-        } else if (type === "choice") {
-          if (userAns === exercise.answer) {
-            isCorrect = true;
-          }
-        } else if (type === "write") {
-          // Validação flexível para escrita: verifica se contém a palavra-chave e tem tamanho mínimo
-          if (
-            userAns.toLowerCase().includes(exercise.keyword.toLowerCase()) &&
-            userAns.length > 5
-          ) {
-            isCorrect = true;
-          }
-        }
-
-        // Exibir Feedback
-        if (isCorrect) {
-          feedbackDiv.className = "feedback correct";
-          feedbackDiv.innerHTML = `<strong>Correto!</strong> Muito bem.`;
-        } else {
-          feedbackDiv.className = "feedback incorrect";
-          let correctMsg = exercise.answer;
-          if (type === "write")
-            correctMsg = `Sugestão de resposta: "${exercise.model}"`;
-
-          feedbackDiv.innerHTML = `<strong>Incorreto.</strong> <br> ${exercise.explanation} <br> <em>A resposta correta seria: ${correctMsg}</em>`;
-        }
-      };
-
-      // Inicializar
-      renderTopics();
     </script>
-  </body>
+</body>
 </html>
